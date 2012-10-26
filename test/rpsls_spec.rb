@@ -12,4 +12,8 @@ describe Rpsls do
     @juego.respond_to?("human_choice").should == true
   end
   
+  it "Debe existir eleccion de ordenador" do
+    @juego.respond_to?("computer_choice").should == true
+  end
+  
 end
