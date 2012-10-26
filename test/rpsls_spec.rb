@@ -16,4 +16,8 @@ describe Rpsls do
     @juego.respond_to?("computer_choice").should == true
   end
   
+  it "Debe existir una lista de jugadas validas" do
+    @juego.respond_to?("valid_choices").should == true    
+  end
+  
 end
