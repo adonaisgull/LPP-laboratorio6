@@ -20,4 +20,8 @@ describe Rpsls do
     @juego.respond_to?("valid_choices").should == true    
   end
   
+  it "Debe existir una lista de jugadas posibles y quien gana" do
+    @juego.respond_to?("beats").should == true && @juego.respond_to?("winner").should == true
+  end
+  
 end
