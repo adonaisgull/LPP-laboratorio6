@@ -5,7 +5,7 @@
 
 class Rpsls
   
-  attr_reader :human_choice, :computer_choice, :valid_choices, :beats, :winner
+  attr_reader :human_choice, :computer_choice, :valid_choices, :beats, :winner, :result
   
   def initialize()
     @valid_choices = [:rock, :paper, :scissors, :lizard, :spock]
