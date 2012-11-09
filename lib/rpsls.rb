@@ -12,12 +12,13 @@ class Rpsls
   end
   
   def get_human(human_choice)
-    
-    human_choice = human_choice.to_sym
-    
+    human_choice = human_choice.to_sym    
     if @valid_choices.include?(human_choice)
       @human_choice = human_choice
     end
-    
+  end
+  
+  def get_computer()
+    @computer_choice = @valid_choices.sample
   end
 end

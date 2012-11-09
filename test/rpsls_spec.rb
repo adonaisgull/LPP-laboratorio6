@@ -33,4 +33,9 @@ describe Rpsls do
     @juego.get_human("invalid_choice");
     @juego.valid_choices.include?(@juego.human_choice).should == false
   end
+  
+  it "Se debe invocar al metodo obtener_maquina() para recoger la tirada de la maquina y que esta sea valida" do
+    @juego.get_computer()
+    @juego.valid_choices.include?(@juego.computer_choice).should == true
+  end
 end
