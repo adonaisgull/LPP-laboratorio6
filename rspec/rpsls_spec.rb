@@ -55,6 +55,17 @@ describe Rpsls do
     @juego.respond_to?("result").should == true
   end
   
+  #test 9
+  it "Se debe invocar al metodo jugar() para determinar el ganador de la tirada" do
+    
+    @juego.get_human("rock")
+    @juego.get_computer()
+    @juego.play()
+
+    winners = ["human", "computer", "nobody"]
+    winners.include?(@juego.winner).should == true
+  end
+  
 end
 
 

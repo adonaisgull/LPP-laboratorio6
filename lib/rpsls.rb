@@ -9,6 +9,7 @@ class Rpsls
   
   def initialize()
     @valid_choices = [:rock, :paper, :scissors, :lizard, :spock]
+    @beats = {:rock => [:scissors, :lizard], :paper => [:rock,:spock], :scissors => [:paper, :lizard], :lizard => [:paper, :spock,], :spock => [:rock, :scissors]}
   end
   
   def get_human(human_choice)
@@ -21,4 +22,16 @@ class Rpsls
   def get_computer()
     @computer_choice = @valid_choices.sample
   end
+  
+  def play()
+    
+    if @beats[@human_choice].include?(@computer_choice)
+      @winner = "human"
+    elsif @beats[@computer_choice].include?(@human_choice)
+      @winner = "computer"
+    else
+      @winner = "nobody"
+    end
+  end
+
 end
