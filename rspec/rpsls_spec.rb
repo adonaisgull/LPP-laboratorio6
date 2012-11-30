@@ -65,7 +65,35 @@ describe Rpsls do
     winners = ["human", "computer", "nobody"]
     winners.include?(@juego.winner).should == true
   end
-  
+  it "Se debe de comprobar que las tiradas de la maquina al ser aleatorias recorren las tres posibilidades" do
+    computer_choices = []
+    30.times do
+      @juego.get_human("rock") 
+      @juego.get_computer()
+      @juego.play()
+      computer_choices << @juego.computer_choice
+    end
+   
+    computer_choices.uniq.size.should == @juego.valid_choices.size
+  end
+ 
+  it "Se debe comprobar que las tiradas de la maquina y del humano no son siempre la misma" do
+    computer_choices = []
+    human_choices = []
+    same  = true
+
+    30.times do
+      @juego.get_human(@juego.valid_choices.sample.to_s)
+      @juego.get_computer()
+      @juego.play()
+	
+      same = false if @juego.human_choice != @juego.computer_choice
+    end
+    
+    same.should == false
+
+  end
+
 end
 
 
