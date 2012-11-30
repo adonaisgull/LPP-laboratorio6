@@ -1,3 +1,4 @@
+
 task :default => :bin
 
 desc "Run bin/rpsls_main.rb"
@@ -13,4 +14,9 @@ end
 desc "Run tests with format: html"
 task :thtml do
   sh "rspec rspec/rpsls_spec.rb --format html > rspec_results.html"
+end
+
+desc "Play a game passing your choice"
+task :play, [:choice] do |t, args|
+ sh "ruby -Ilib bin/rpsls_main.rb #{args.choice}"
 end
