@@ -30,7 +30,7 @@ describe Rpsls do
   
   #test 5
   it "Se debe invocar al metodo obtener_humano() para recoger la tirada del humano y que esta sea valida (Se pasa opcion valida)" do 
-    @juego.get_human("rock");
+    @juego.get_human("spock");
     @juego.valid_choices.include?(@juego.human_choice).should == true
   end
   
@@ -58,9 +58,7 @@ describe Rpsls do
   #test 9
   it "Se debe invocar al metodo jugar() para determinar el ganador de la tirada" do
     
-    @juego.get_human("rock")
-    @juego.get_computer()
-    @juego.play()
+    @juego.play("spock")
 
     winners = ["human", "computer", "nobody"]
     winners.include?(@juego.winner).should == true
@@ -68,9 +66,7 @@ describe Rpsls do
   it "Se debe de comprobar que las tiradas de la maquina al ser aleatorias recorren las tres posibilidades" do
     computer_choices = []
     30.times do
-      @juego.get_human("rock") 
-      @juego.get_computer()
-      @juego.play()
+      @juego.play("spock")
       computer_choices << @juego.computer_choice
     end
    
@@ -83,17 +79,11 @@ describe Rpsls do
     same  = true
 
     30.times do
-      @juego.get_human(@juego.valid_choices.sample.to_s)
-      @juego.get_computer()
-      @juego.play()
-	
+      @juego.play(@juego.valid_choices.sample.to_s)	
       same = false if @juego.human_choice != @juego.computer_choice
     end
-    
     same.should == false
-
   end
-
 end
 
 

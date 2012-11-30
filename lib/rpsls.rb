@@ -23,15 +23,27 @@ class Rpsls
     @computer_choice = @valid_choices.sample
   end
   
-  def play()
+  def play(human_choice)
     
-    if @beats[@human_choice].include?(@computer_choice)
-      @winner = "human"
-    elsif @beats[@computer_choice].include?(@human_choice)
-      @winner = "computer"
-    else
-      @winner = "nobody"
-    end
-  end
+    get_human(human_choice)
+    get_computer()
 
-end
+    if @human_choice == nil
+      @result = "Your choice is not valid. Select one of them: #{@valid_choices.join(', ')}."
+    else
+    
+      if @beats[@human_choice].include?(@computer_choice)
+        @winner = "human"
+        @result = "Human win. #{@human_choice} beats #{@computer_choice}."
+      elsif @beats[@computer_choice].include?(@human_choice)
+        @winner = "computer"
+        @result = "Computer win. #{@computer_choice} beats #{@human_choice}."
+      else
+        @winner = "nobody"
+        @result = "Nobody win. It's a tie."
+      end
+    end
+  
+    @result 
+ end
+end 
